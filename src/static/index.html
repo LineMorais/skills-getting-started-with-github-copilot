@@ -60,6 +60,10 @@
             const activityCard = document.createElement("div");
             activityCard.className = "activity-card";
 
+            const participantsInfo = activityDetails.participants.length > 0
+              ? activityDetails.participants.map((participant) => `<li>${participant}</li>`).join("")
+              : "<li>No participants yet</li>";
+
             activityCard.innerHTML = `
               <h4>${activityName}</h4>
               <p>${activityDetails.description}</p>
@@ -68,9 +72,7 @@
               <div class="participants">
                 <h5>Participants:</h5>
                 <ul>
-                  ${activityDetails.participants
-                    .map((participant) => `<li>${participant}</li>`)
-                    .join("")}
+                  ${participantsInfo}
                 </ul>
               </div>
             `;
